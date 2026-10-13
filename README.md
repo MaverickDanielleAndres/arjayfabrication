@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arjay Fabrication Website
 
-## Getting Started
+Premium, image-led website for Arjay Fabrication, built with Next.js App Router, TypeScript and Tailwind CSS.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local`. Never commit `.env.local`.
 
-## Learn More
+### Gemini chatbot
 
-To learn more about Next.js, take a look at the following resources:
+Set `GEMINI_API_KEY` to a server-side Google AI Studio key. The default model is the supported stable `gemini-3.6-flash`; override it with `GEMINI_MODEL` if required. The key is only read in `src/app/api/chat/route.ts` and is never sent to the browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Chat history lives in React state for the current page session only. Refreshing or choosing Clear Chat resets it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Enquiry delivery
 
-## Deploy on Vercel
+Set `ENQUIRY_WEBHOOK_URL` to an HTTPS endpoint that accepts the JSON enquiry payload and responds with a 2xx status. Use `ENQUIRY_WEBHOOK_TOKEN` if that endpoint expects a bearer token.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Until a delivery endpoint is configured, forms accurately report that online delivery is unavailable and show direct phone and email options. They never display a false success state.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Production rate limiting
+
+Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` for shared production rate limiting. A bounded in-memory fallback is included for local development and single-instance testing, but it does not coordinate limits across serverless instances.
+
+## Verification
+
+```bash
+npm run lint
+npm run build
+```
+
+Business information and copy are controlled by `branding.md` and `website-content.md`. Update the privacy page with final provider names and obtain an Australian privacy review before production launch.

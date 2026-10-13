@@ -1,69 +1,29 @@
 import Image from "next/image";
+import Link from "next/link";
+import { BeforeAfter, EnquiryForm } from "@/components/interactive";
+import { QuoteBand } from "@/components/layout-parts";
+import { Icon } from "@/components/site-shell";
+import { projects, services } from "@/lib/site";
 
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+export default function HomePage() {
+  return <>
+    <section className="home-hero">
+      <div className="hero-photo"><Image src="/Fabrication - Finished Work.webp" alt="Finished custom aluminium canopy fabricated by Arjay Fabrication" fill sizes="100vw" priority /></div>
+      <div className="hero-scrim" />
+      <div className="shell hero-grid">
+        <div className="hero-copy"><span className="eyebrow light">WINGHAM · MID NORTH COAST NSW</span><h1>Steel & Aluminium Fabrication, Built for the Job.</h1><p>Custom fabrication, welding, vehicle builds and repairs from Wingham. See our work, then tell us what you need.</p><div className="button-row"><Link className="button" href="/contact#quote">Get a Free Quote <Icon name="arrow" /></Link><Link className="button button-light" href="/our-work">See Our Work</Link></div></div>
+        <aside className="hero-form"><div className="form-heading"><span>QUICK ENQUIRY</span><h2>Tell us about your job</h2></div><EnquiryForm compact /></aside>
+      </div>
+      <div className="hero-proof"><span>STEEL</span><span>ALUMINIUM</span><span>WELDING</span><span>REPAIRS</span><span>SUPPLIES</span></div>
+    </section>
+    <section className="section intro-section shell"><div className="intro-index">01</div><div><span className="eyebrow">WHAT WE DO</span><h2>Custom metalwork for working life.</h2></div><div className="intro-copy"><p>From fabricated steel frames and aluminium storage to truck body repairs and one-off builds, our focus is on making the right solution for the job.</p><Link className="text-link" href="/services">Explore Services <Icon name="arrow" /></Link></div></section>
+    <section className="section service-showcase shell"><div className="section-heading"><span className="eyebrow">BUILT AROUND THE JOB</span><h2>What can we build for you?</h2><p>Explore our capabilities through genuine workshop and completed project photography.</p></div><div className="service-mosaic">{services.slice(0, 6).map((service, index) => <Link href={`/services/${service.slug}`} key={service.slug} className={`service-tile tile-${index + 1}`}><Image src={service.image} alt={service.alt} fill sizes="(max-width: 800px) 100vw, 50vw" /><span className="tile-number">0{index + 1}</span><span className="tile-content"><strong>{service.navTitle}</strong><small>View service <Icon name="arrow" /></small></span></Link>)}</div><div className="section-action"><Link className="button button-dark" href="/services">View All Services <Icon name="arrow" /></Link></div></section>
+    <section className="section work-feature"><div className="shell"><div className="split-heading"><div><span className="eyebrow">REAL WORK. REAL RESULTS.</span><h2>The work tells the story.</h2></div><p>Fabrication jobs, vehicle repairs, fencing, storage and custom metalwork photographed in the real world.</p></div><div className="featured-grid">{projects.slice(0, 5).map((project, index) => <article key={project.slug} className={`featured-project project-${index + 1}`}><div className="featured-image"><Image src={project.image} alt={project.alt} fill sizes="(max-width: 800px) 100vw, 50vw" /></div><div><span>{project.category}</span><h3>{project.title}</h3>{project.href && <Link href={project.href} aria-label={`View ${project.title}`}>View project <Icon name="arrow" /></Link>}</div></article>)}</div><Link className="text-link large-link" href="/our-work">Explore all project work <Icon name="arrow" /></Link></div></section>
+    <section className="section compare-section shell"><div className="split-heading"><div><span className="eyebrow">BEFORE & AFTER</span><h2>See the difference.</h2></div><p>The clearest way to understand repair and replacement work is to compare what changed.</p></div><div className="compare-grid"><article><BeforeAfter before="/Before Truck Body Repair.webp" after="/After Truck Body Repair.webp" beforeAlt="Truck tipper body during repair before refinishing" afterAlt="Repaired truck tipper body after refinishing" /><div className="compare-caption"><span>VEHICLE REPAIR</span><h3>Truck Body Repair</h3><Link href="/our-work/truck-body-repair">Project details <Icon name="arrow" /></Link></div></article><article><BeforeAfter before="/Before Photo Of Balustrade Handrail Job.jpg" after="/After Photo Of Balustrade Handrail Job.jpg" beforeAlt="Older balustrade before replacement" afterAlt="Completed replacement balustrade and handrail" /><div className="compare-caption"><span>PROPERTY METALWORK</span><h3>Balustrade & Handrail</h3><Link href="/our-work/balustrade-handrail">Project details <Icon name="arrow" /></Link></div></article></div></section>
+    <section className="section approach-section"><div className="shell approach-grid"><div className="approach-image"><Image src="/Professinal Welding Services.webp" alt="Welder working inside a large fabricated steel cylinder" fill sizes="(max-width: 800px) 100vw, 50vw" /></div><div className="approach-copy"><span className="eyebrow">BUILT AROUND THE JOB</span><h2>Straightforward fabrication, made to fit.</h2><p>Arjay Fabrication is based in Wingham and works with steel and aluminium for a wide range of practical applications.</p><p>Tell us the dimensions, the problem or the outcome you need, and we can discuss the next step.</p><Link className="button button-dark" href="/about">About Arjay Fabrication <Icon name="arrow" /></Link></div></div></section>
+    <section className="section process-section shell"><div className="section-heading narrow"><span className="eyebrow">ONE PRACTICAL APPROACH</span><h2>From a repair to a custom build.</h2></div><div className="process-list">{[["Repair", "Assess damaged metalwork and discuss a practical way forward.", "/Truck Repair.webp"],["Fabricate", "Turn dimensions and intended use into steel or aluminium work.", "/Fabrication Taree.webp"],["Fit Out", "Shape storage, canopies and shelving around a working vehicle.", "/Tool Box Supply.webp"],["Supply", "Ask about steel types, sizes, quantities and current availability.", "/Welding.webp"]].map(([title, copy, image], index) => <article key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{copy}</p></div><div className="process-image"><Image src={image} alt="" fill sizes="260px" /></div></article>)}</div></section>
+    <section className="location-section"><div className="shell location-grid"><div><span className="eyebrow">WHERE WE WORK</span><h2>Based in Wingham.<br />Working across the Mid North Coast.</h2></div><div><p>We welcome enquiries from Wingham, Taree, Forster, Tuncurry and surrounding areas. Tell us where your project is located so we can discuss the work and service arrangements.</p><Link className="text-link" href="/service-areas">Check your location <Icon name="arrow" /></Link></div><div className="location-mark" aria-hidden="true"><b>W</b><span>MID NORTH COAST<br />NEW SOUTH WALES</span></div></div></section>
+    <section className="section faq-teaser shell"><div><span className="eyebrow">GOOD TO KNOW</span><h2>A few things worth knowing.</h2></div><div className="faq-links">{["What kinds of fabrication work do you take on?", "Can I enquire about on-site welding?", "Can you fabricate to my measurements?", "Can I send photos of the job?"].map((question, index) => <Link href="/faq" key={question}><span>0{index + 1}</span>{question}<Icon name="arrow" /></Link>)}</div></section>
+    <QuoteBand title="Got a fabrication job in mind?" copy="Whether it is a repair, a work-vehicle modification or a one-off build, send through the details and we will help you take the next step." />
+  </>;
 }
