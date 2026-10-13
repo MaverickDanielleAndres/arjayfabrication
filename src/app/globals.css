@@ -67,7 +67,7 @@ p { margin: 0 0 1.25rem; }
 .hero-photo, .hero-scrim { position: absolute; inset: 0; }
 .hero-photo img { object-fit: cover; object-position: center; filter: saturate(.82) contrast(1.06); }
 .hero-scrim { background: linear-gradient(90deg, rgba(15,16,17,.9) 0%, rgba(15,16,17,.68) 47%, rgba(15,16,17,.32) 76%, rgba(15,16,17,.44) 100%); }
-.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .58fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); padding-block: 3.5rem 5.75rem; }
+.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .58fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); padding-block: 6rem; }
 .hero-copy { max-width: 760px; }
 .hero-copy h1 { max-width: 760px; font-size: clamp(3.5rem, 6.3vw, 6rem); text-wrap: balance; }
 .hero-copy > p { max-width: 620px; margin: 1.5rem 0 2rem; color: rgba(255,255,255,.86); font-size: clamp(1.05rem, 1.7vw, 1.3rem); }
@@ -76,7 +76,8 @@ p { margin: 0 0 1.25rem; }
 .form-heading > span { color: var(--accent); font-size: .66rem; font-weight: 800; letter-spacing: .16em; }
 .form-heading h2 { margin-top: .25rem; font-size: 2rem; }
 .form-heading p { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
-.hero-proof { position: absolute; z-index: 2; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; gap: clamp(1.5rem, 6vw, 6rem); padding: 1.15rem 2rem; border-top: 1px solid rgba(255,255,255,.24); background: rgba(16,17,18,.48); backdrop-filter: blur(8px); font-family: var(--font-display); font-size: .83rem; font-weight: 700; letter-spacing: .16em; }
+.hero-proof { position: absolute; z-index: 2; bottom: 0; left: 0; right: 0; min-height: 72px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; padding-inline: max(2rem, calc((100vw - var(--shell)) / 2)); border-top: 1px solid rgba(255,255,255,.24); background: rgba(16,17,18,.62); backdrop-filter: blur(8px); font-family: var(--font-display); font-size: .83rem; font-weight: 700; letter-spacing: .16em; text-align: center; }
+.hero-proof-top { top: 0; bottom: auto; border-top: 0; border-bottom: 1px solid rgba(255,255,255,.24); }
 
 .enquiry-form label { display: block; color: var(--ink); font-size: .8rem; font-weight: 750; }
 .enquiry-form label > span { display: block; margin-bottom: .3rem; }
@@ -353,7 +354,7 @@ p { margin: 0 0 1.25rem; }
   .nav { gap: 1.2rem; }
   .hero-grid { grid-template-columns: 1fr 350px; gap: 2rem; }
   .home-hero { min-height: auto; }
-  .hero-grid { padding-block: 3.5rem 6rem; }
+  .hero-grid { padding-block: 5.5rem; }
   .intro-section { gap: 2.5rem; }
   .location-grid { grid-template-columns: 1fr 1fr; }.location-mark { display: none; }
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }.footer-grid > div:last-child { grid-column: 2; }
@@ -370,10 +371,10 @@ p { margin: 0 0 1.25rem; }
   .nav-open { display: flex; }
   .nav > a:not(.button) { padding: .8rem 0; border-bottom: 1px solid var(--border); }
   .nav .button { margin-top: .8rem; }
-  .hero-grid { grid-template-columns: 1fr; padding-block: 3rem 6rem; }
+  .hero-grid { grid-template-columns: 1fr; padding-block: 5.5rem; }
   .hero-copy h1 { font-size: clamp(3rem, 11vw, 4.5rem); overflow-wrap: break-word; }
   .hero-form { max-width: 620px; }
-  .hero-proof { justify-content: flex-start; overflow-x: auto; }
+  .hero-proof { overflow: hidden; }
   .intro-section, .split-heading, .editorial-grid, .service-detail, .area-list, .faq-page, .contact-layout, .faq-teaser { grid-template-columns: 1fr; gap: 2.5rem; }
   .intro-visual { min-height: 480px; padding-left: 3rem; }
   .intro-image-main { height: 430px; }
@@ -407,6 +408,8 @@ p { margin: 0 0 1.25rem; }
   .menu-button > span:last-child { display: none; }
   .hero-copy h1 { font-size: clamp(2.55rem, 12vw, 3rem); line-height: 1.04; text-wrap: pretty; }
   .hero-copy > p { font-size: .98rem; overflow-wrap: anywhere; }
+  .hero-proof { min-height: 48px; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; padding-inline: .35rem; overflow: hidden; font-size: clamp(.42rem, 1.8vw, .55rem); letter-spacing: .04em; line-height: 1.2; }
+  .hero-grid { padding-block: 5rem; }
   .hero-form { padding: 1.15rem; }
   .button-row .button { width: 100%; }
   .compact .field-grid, .field-grid { grid-template-columns: 1fr; }
