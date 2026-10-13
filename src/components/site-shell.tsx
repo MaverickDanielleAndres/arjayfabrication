@@ -23,7 +23,7 @@ export function SiteHeader() {
         <Link href="/" className="brand" aria-label="Arjay Fabrication home">
           <Image src="/arjay-logo-250px.webp" alt="Arjay Fabrication" width={250} height={114} priority />
         </Link>
-        <button className="menu-button" type="button" aria-expanded={open} aria-controls="primary-nav" onClick={() => setOpen((value) => !value)}>
+        <button className="menu-button" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="primary-nav" onClick={() => setOpen((value) => !value)}>
           <span className="menu-lines" aria-hidden="true"><i /><i /></span>
           <span>{open ? "Close" : "Menu"}</span>
         </button>

@@ -411,8 +411,9 @@ p { margin: 0 0 1.25rem; }
   .button-row .button { width: 100%; }
   .compact .field-grid, .field-grid { grid-template-columns: 1fr; }
   .field-wide { grid-column: auto; }
-  .service-mosaic { display: flex; width: 100%; max-width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: 0; padding-inline: 0; }
-  .service-tile { flex: 0 0 100%; height: 390px; scroll-snap-align: start; }
+  .service-mosaic { display: grid; width: 100%; max-width: 100%; grid-template-columns: 1fr; grid-template-rows: none; overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .service-tile { width: 100%; height: 320px; }
+  .service-mosaic .tile-1 { grid-row: auto !important; }
   .section-action { text-align: left; }
   .section-action .button { width: 100%; }
   .intro-visual { min-height: 390px; padding: 0 0 3rem 2.25rem; }
@@ -451,7 +452,7 @@ p { margin: 0 0 1.25rem; }
   .intro-visual { min-height: 340px; padding-left: 1.5rem; }
   .intro-image-main { height: 300px; }
   .intro-image-detail { height: 130px; }
-  .service-tile { flex-basis: 100%; }
+  .service-tile { height: 290px; }
   .project-image { height: 300px; }
   .contact-layout > aside, .contact-form-panel { padding: 1.2rem; }
   .contact-methods a, .contact-methods div { min-width: 0; }
