@@ -6,10 +6,6 @@ import { Icon } from "./site-shell";
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="footer-cta shell">
-        <div><span className="eyebrow light">START A CONVERSATION</span><h2>Have a job in mind?</h2></div>
-        <div className="button-row"><Link className="button" href="/contact#quote">Request a Quote <Icon name="arrow" /></Link><a className="button button-light" href={site.phoneHref}>Call {site.phone}</a></div>
-      </div>
       <div className="footer-grid shell">
         <div className="footer-brand"><Image src="/arjay-logo-250px.webp" alt="Arjay Fabrication" width={250} height={114} /><p>Practical steel and aluminium fabrication from Wingham for the Mid North Coast.</p></div>
         <div><h3>Explore</h3><Link href="/about">About</Link><Link href="/our-story">Our Story</Link><Link href="/our-work">Our Work</Link><Link href="/service-areas">Service Areas</Link><Link href="/faq">FAQs</Link></div>
